@@ -15,7 +15,9 @@ st.markdown("_Prototype v0.4.1_")
 # FILE PATH AND MONTHS LIST
 #######################################
 
-file_path = "/Users/soniaranvir/Desktop/streamlit/Financial Data Clean.xlsx"
+# Correct file path
+data_file_path = 'Financial Data Clean.xlsx'
+df = pd.read_excel(data_file_path)
 all_months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 #######################################
