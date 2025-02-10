@@ -17,7 +17,7 @@ st.markdown("_Prototype v0.4.1_")
 
 # Correct file path
 data_file_path = 'Financial Data Clean.xlsx'
-df = pd.read_excel(data_file_path)
+df = pd.read_excel(data_file_path, engine='openpyxl')
 all_months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
 #######################################
