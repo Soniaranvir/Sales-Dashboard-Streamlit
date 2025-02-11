@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
+import requests
 
 # PAGE SETUP: Ensure this is the very first Streamlit command in your script
 st.set_page_config(page_title="Sales Dashboard", page_icon=":bar_chart:", layout="wide")
@@ -15,32 +16,32 @@ st.markdown("_Prototype v0.4.1_")
 # FILE PATH AND MONTHS LIST
 #######################################
 
-# Correct file path
-data_file_path = 'Financial Data Clean.xlsx'
-df = pd.read_excel(data_file_path, engine='openpyxl')
-all_months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+# Correct raw URL for GitHub file
+data_file_url = 'https://raw.githubusercontent.com/Soniaranvir/Sales-Dashboard-Streamlit/main/Financial%20Data%20Clean.xlsx'
 
-#######################################
-# DATA LOADING
-#######################################
-
+# Define the data loading function
 @st.cache_data
-def load_data(path: str):
+def load_data(url: str):
     try:
-        df = pd.read_excel(path)
-        st.success(f"Data loaded successfully from {path}")
+        # Fetch the file from the URL
+        r = requests.get(url)
+        with open("temp.xlsx", "wb") as f:
+            f.write(r.content)
+        # Load the data from the temporary file
+        df = pd.read_excel("temp.xlsx", engine='openpyxl')
+        st.success(f"Data loaded successfully from {url}")
         return df
     except Exception as e:
         st.error(f"Error loading data: {e}")
         return None
 
-
 # Load the data and check
-df = load_data(file_path)
+df = load_data(data_file_url)
 
-if df is None:
-    st.error("Data could not be loaded. Please check the file format and path.")
-    st.stop()
+# If the data is successfully loaded, display it
+if df is not None:
+    st.write(df.head())  # Show first few rows of the data
+
 
 with st.expander("Data Preview"):
     st.dataframe(df)
