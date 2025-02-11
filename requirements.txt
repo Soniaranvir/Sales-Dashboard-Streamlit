@@ -2,5 +2,7 @@ duckdb==1.1.3
 pandas
 plotly
 streamlit
-openpyxl  # For reading Excel files
+requests
+openpyxl
+
 
