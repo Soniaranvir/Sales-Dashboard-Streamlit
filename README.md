@@ -1,8 +1,8 @@
 # Sales Dashboard with Streamlit, Plotly, and DuckDB 🚀
 
 ## Live Dashboard
-https://sales-dashboard-app-qrkzx6tezyzewgrumtmgl5.streamlit.app/
-
+[https://sales-dashboard-app-qrkzx6tezyzewgrumtmgl5.streamlit.app/
+](https://sales-dashboard-app-cuwhttwlqiv3dhgz6yffvm.streamlit.app/)
 ## Why This Project? 🌟
 
 An interactive Sales Dashboard built with Streamlit, Plotly, Pandas, and DuckDB, designed for financial data visualization and analysis. This prototype (v0.4.1) provides real-time insights into sales performance, budget vs. forecast comparisons, and financial KPIs.
